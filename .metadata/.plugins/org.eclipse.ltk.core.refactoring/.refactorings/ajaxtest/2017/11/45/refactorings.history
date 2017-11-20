@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.wzx.servlet.CityServlet&apos; to &apos;ProvinceServlet&apos;&#x0D;&#x0A;- Original project: &apos;ajaxtest&apos;&#x0D;&#x0A;- Original element: &apos;com.wzx.servlet.CityServlet&apos;&#x0D;&#x0A;- Renamed element: &apos;com.wzx.servlet.ProvinceServlet&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;CityServlet&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.wzx.servlet{CityServlet.java[CityServlet" matchStrategy="1" name="ProvinceServlet" qualified="false" references="true" similarDeclarations="false" stamp="1510021723414" textual="false" version="1.0"/>
+</session>

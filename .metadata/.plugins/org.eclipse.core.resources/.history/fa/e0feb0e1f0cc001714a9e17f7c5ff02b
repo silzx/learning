@@ -1,0 +1,5 @@
+package com.wzx.service;
+
+public class UserService {
+
+}

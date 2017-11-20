@@ -1,0 +1,12 @@
+package com.wzx.service.inter;
+
+import java.util.List;
+
+import com.wzx.dto.NewsDto;
+
+public interface INewsService {
+	public int delNews(int id);
+	public List<NewsDto> queryNews();
+	public int addNews(NewsDto n);
+	public int rowCount();
+}

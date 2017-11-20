@@ -1,0 +1,24 @@
+package com.wzx.util;
+
+import java.util.List;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import com.wzx.dto.FenYe;
+import com.wzx.dto.NewsDto;
+import com.wzx.dto.Role;
+import com.wzx.service.FenYeService;
+import com.wzx.service.NewsService;
+import com.wzx.service.RoleService;
+import com.wzx.service.inter.IFenYeService;
+import com.wzx.service.inter.INewsService;
+import com.wzx.service.inter.IRoleService;
+
+public class Test extends ActionSupport{
+	public  static void main(String[] args) {
+		IRoleService rser=new RoleService();
+		Role r=rser.getRole(1);
+		for(Power p:r.getPower())
+	}
+
+}

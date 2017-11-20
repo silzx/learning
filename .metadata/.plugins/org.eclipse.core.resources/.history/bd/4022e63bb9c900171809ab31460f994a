@@ -1,0 +1,16 @@
+package com.wzx.dto;
+
+public class FenYe {
+	public static int page;
+	public static int row;
+	public static int pageCount;
+	public static int rowCount;
+	public static int startRow;
+	public static int endRow;
+	
+	
+	
+	
+	
+	
+}

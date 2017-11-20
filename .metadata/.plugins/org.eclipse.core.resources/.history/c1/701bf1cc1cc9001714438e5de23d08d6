@@ -1,0 +1,5 @@
+package com.wzx.dao.inter;
+
+public interface INewsDao {
+
+}

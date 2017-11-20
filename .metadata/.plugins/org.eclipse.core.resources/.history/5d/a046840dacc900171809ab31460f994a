@@ -1,0 +1,11 @@
+package com.wzx.service;
+
+import java.util.List;
+
+import com.wzx.dao.NewsDao;
+import com.wzx.dto.NewsDto;
+import com.wzx.service.inter.INewsService;
+
+public class NewsService implements INewsService{
+
+}

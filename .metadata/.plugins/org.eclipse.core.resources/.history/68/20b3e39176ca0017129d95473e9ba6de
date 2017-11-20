@@ -1,0 +1,8 @@
+package com.wzx.dto;
+
+public class Power {
+	private int id;
+	private int rold_id;
+	private String rname;
+	private List<Power> pp;
+}

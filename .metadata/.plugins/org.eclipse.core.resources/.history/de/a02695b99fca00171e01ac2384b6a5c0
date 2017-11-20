@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzx.dao.Role">
+	<resultMap type="role" id="getPowerByRole">
+		<id column="id" property="id"/>
+		<result column="role_id" property="role_id"/>
+		<result column="rname" property="rname"/>
+		<!-- 
+			通过角色查询权限列表：
+			select * from role_power rp and power p where rp.p_id=p.id and  rp.r_id=?
+			property:实体类 属性的名称
+			cloumn:查询角色权限列表需要知道角色列表主键ID
+			ofType:集合中存放的数据的类型
+		 -->
+		<collection property="power" column=""></collection>
+	</resultMap>
+	<select id="getRole" parameterType="int" resultType="getPowerByRole">
+		select * from role where id=#{role_no}
+	</select>
+</mapper>

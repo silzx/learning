@@ -1,0 +1,52 @@
+package com.wzx.service;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.wzx.dao.NewsDao;
+import com.wzx.dto.FenYe;
+import com.wzx.dto.NewsDto;
+import com.wzx.service.inter.INewsService;
+import com.wzx.util.SqlSessionUtil;
+
+public class NewsService implements INewsService{
+
+	@Override
+	public int delNews(int id) {
+		SqlSession ss=SqlSessionUtil.init().getSs();
+		NewsDao nd=ss.getMapper(NewsDao.class);
+		int i=nd.delNews(id);
+		ss.commit();
+		ss.close();
+		return i;
+	}
+
+	@Override
+	public List<NewsDto> queryNews() {
+		SqlSession ss=SqlSessionUtil.init().getSs();
+		NewsDao nd=ss.getMapper(NewsDao.class);
+		List<NewsDto> news=nd.queryNews();
+		ss.close();
+		return news;
+	}
+
+	@Override
+	public int addNews(NewsDto n) {
+		SqlSession ss=SqlSessionUtil.init().getSs();
+		NewsDao nd=ss.getMapper(NewsDao.class);
+		int i=nd.addNews(n);
+		return i;
+	}
+
+	@Override
+	public int rowCount(FenYe fy) {
+		SqlSession ss=SqlSessionUtil.init().getSs();
+		NewsDao nd=ss.getMapper(NewsDao.class);
+		int i=nd.rowCount(fy);
+		return i;
+	}
+	
+	
+}

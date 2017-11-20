@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+	<select id="userLogin" parameterType="java.util.HashMap" resultType="com.wzx.Dto.UserDto">
+		select * from p_user where name=#{name} and pwd=#{pwd}
+	</select>
+	
+	<insert id="zhuce" parameterType="com.wzx.Dto.UserDto">
+		
+		<selectKey order="BEFORE" keyProperty="id" resultType="java.lang.String">
+			select sys_guid() from dual
+		</selectKey>
+		insert into p_user 
+			(id,name,pwd,age,nickname,sex,yes,pic,pow_no,address)
+		values
+			(sys_guid(),#{name},#{pwd},#{age},#{nickname},#{sex},'yes',#{pic},#{pow_no},#{address})
+	</insert>
+	
+<!-- 	<select id="getPower" resultType="com.wzx.Dto.PowerDto"> -->
+<!-- 		select * from p_power -->
+<!-- 	</select> -->
+</mapper>

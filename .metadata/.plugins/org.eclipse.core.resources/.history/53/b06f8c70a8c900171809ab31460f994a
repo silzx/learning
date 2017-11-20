@@ -1,0 +1,28 @@
+package com.wzx.service;
+
+import java.util.List;
+
+import com.wzx.dto.NewsDto;
+import com.wzx.service.inter.INewsService;
+
+public class NewsService implements INewsService{
+	private INewsDao nd=new NewsDao();
+	@Override
+	public int delNews(int id) {
+		
+		return 0;
+	}
+
+	@Override
+	public List<NewsDto> queryNews() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int addNews(NewsDto n) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

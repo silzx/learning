@@ -1,0 +1,7 @@
+package com.wzx.service;
+
+import com.wzx.service.inter.IFileUploadService;
+
+public class FileUploadService implements IFileUploadService{
+
+}

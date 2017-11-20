@@ -1,0 +1,27 @@
+package com.wzx.util;
+
+import java.util.List;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import com.wzx.dto.FenYe;
+import com.wzx.dto.NewsDto;
+import com.wzx.service.FenYeService;
+import com.wzx.service.NewsService;
+import com.wzx.service.inter.IFenYeService;
+import com.wzx.service.inter.INewsService;
+
+public class Test extends ActionSupport{
+	public String te(){
+		String pag=null;
+		INewsService ns=new NewsService();
+		IFenYeService fs=new FenYeService();
+		ActionContext.getContext().getSession().put("fy", null);
+		FenYe fy=(FenYe) ActionContext.getContext().getSession().get("fy");
+		fy=fs.getFenYe(fy, pag);
+		List<NewsDto> news=ns.queryNews(fy);
+		ActionContext.getContext().getSession().put("fy", fy);
+		System.out.println(news.size());
+	}
+
+}

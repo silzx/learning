@@ -1,0 +1,16 @@
+package com.wzx.dao;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.wzx.dao.inter.INewsDao;
+import com.wzx.util.SqlSessionUtil;
+
+public class NewsDao implements INewsDao{
+
+	@Override
+	public int delNews(int id) {
+		SqlSession ss=SqlSessionUtil.init().getSs();
+
+	}
+
+}

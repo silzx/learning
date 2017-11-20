@@ -1,0 +1,53 @@
+package com.wzx.action;
+
+import java.net.URLEncoder;
+import java.util.List;
+
+import javax.servlet.http.Cookie;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.wzx.dto.Power;
+import com.wzx.dto.UserDto;
+import com.wzx.service.UserService;
+import com.wzx.service.inter.IUserService;
+
+public class UserAction extends ActionSupport{
+	private UserDto u;
+	private IUserService us=new UserService();
+	public String login(){
+		UserDto user=us.login(u);
+		try {
+			if (user != null) {
+				Cookie nameC = new Cookie("nameC", URLEncoder.encode(user.getName(), "utf-8"));
+				Cookie pwdC = new Cookie("pwdC", user.getPwd());
+				// 设置cookie失效时间
+				nameC.setMaxAge(24 * 60 * 60);
+				pwdC.setMaxAge(24 * 60 * 60);
+				// 设置cookie保存路径
+				nameC.setPath("/MyBatis");
+				pwdC.setPath("/MyBatis");
+				// 放到相应对象中
+				ServletActionContext.getResponse().addCookie(nameC);
+				ServletActionContext.getResponse().addCookie(pwdC);
+				session.put("user", user);
+				List<Power> power=user.getRole().getPower();
+				session.put("power", power);
+				flag="success";
+			} else {
+				session.put("error", "账号或者密码错误");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public UserDto getU() {
+		return u;
+	}
+	public void setU(UserDto u) {
+		this.u = u;
+	}
+	
+}

@@ -1,0 +1,30 @@
+package com.wzx.service;
+
+import com.wzx.dto.FenYe;
+import com.wzx.service.inter.IFenYeService;
+import com.wzx.service.inter.INewsService;
+
+public class FenYeService implements IFenYeService{
+	INewsService ns=new NewsService();
+	@Override
+	public FenYe getFenYe(FenYe fy, String pag) {
+		if(fy==null){
+			fy=new FenYe();
+		}
+		if(fy.search.get("title")==null){
+			fy.search.put("title", "");
+		}
+		if(fy.search.get("context")==null){
+			fy.search.put("context", "");
+		}
+		if(pag==null){
+			fy.page=1;
+		}else{
+			fy.page=Integer.parseInt(pag);
+		}
+		FenYe.rowCount=ns.rowCount(fy);
+		FenYe.init();
+		return fy;
+	}
+	
+}

@@ -1,0 +1,11 @@
+package com.wzx.dao.inter;
+
+import java.util.List;
+
+import com.wzx.dto.NewsDto;
+
+public interface INewsDao {
+	public int delNews(int id);
+	public List<NewsDto> newsList();
+
+}

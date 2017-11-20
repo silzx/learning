@@ -1,0 +1,19 @@
+package com.wzx.service;
+
+import com.wzx.dto.FenYe;
+import com.wzx.service.inter.IFenYeService;
+
+public class FenYeService implements IFenYeService{
+
+	@Override
+	public FenYe getFenYe(FenYe fy, String pag) {
+		if(fy==null){
+			fy=new FenYe();
+		}
+		if(fy.search.get("title")==null){
+			fy.search.put("title", "");
+		}
+		return null;
+	}
+	
+}

@@ -1,0 +1,8 @@
+1.)什么是web资源？
+HttpServletRequest，HttpSession，servletContext等原生的servlet API.
+2.)为什么访问web资源？
+B/S应用中的controller必然要访问web资源：向域对象中读写属性，读写cookie，获取realPath等等
+3.）如何访问web资源？
+Ⅰ.和servlet API解耦的方式：只能访问有限的servlet API对象，且只能访问其有限的方法
+
+Ⅱ.和servlet API耦合的方式：可以访问更多的servlet API对象，且可以调用其原生的方法

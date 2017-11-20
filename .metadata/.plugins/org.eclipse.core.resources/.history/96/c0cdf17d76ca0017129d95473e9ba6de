@@ -1,0 +1,7 @@
+package com.wzx.dto;
+
+public class Role {
+	private int id;
+	private int power_id;
+	private String pname;
+}

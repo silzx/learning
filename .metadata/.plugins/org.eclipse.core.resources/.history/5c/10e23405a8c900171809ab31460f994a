@@ -1,0 +1,35 @@
+package com.wzx.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.wzx.dao.inter.INewsDao;
+import com.wzx.dto.NewsDto;
+import com.wzx.util.SqlSessionUtil;
+
+public class NewsDao implements INewsDao{
+
+	@Override
+	public int delNews(int id) {
+		SqlSession ss=SqlSessionUtil.init().getSs();
+		int i=ss.update("com.wzx.dao.inter.INewsDao.delNews", id);
+		ss.commit();
+		ss.close();
+		return i;
+	}
+
+	@Override
+	public List<NewsDto> queryNews() {
+		SqlSession ss=SqlSessionUtil.init().getSs();
+		List<NewsDto> news=ss.selectList("com.wzx.dao.inter.INewsDao.queryNews");
+		ss.close();
+		return news;
+	}
+
+	@Override
+	public int addNews(NewsDto n) {
+		return 0;
+	}
+
+}

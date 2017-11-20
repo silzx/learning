@@ -1,0 +1,17 @@
+package com.wzx.service;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.wzx.dto.UserDto;
+import com.wzx.service.inter.IUserService;
+import com.wzx.util.SqlSessionUtil;
+
+public class UserService implements IUserService{
+
+	@Override
+	public UserDto login(UserDto u) {
+		SqlSession ss=SqlSessionUtil.init().getSs();
+		return null;
+	}
+
+}

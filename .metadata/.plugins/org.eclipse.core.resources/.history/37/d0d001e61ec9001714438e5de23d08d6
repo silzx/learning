@@ -1,0 +1,12 @@
+package com.wzx.dao;
+
+import com.wzx.dao.inter.INewsDao;
+
+public class NewsDao implements INewsDao{
+
+	@Override
+	public int delNews(int id) {
+		return 0;
+	}
+
+}

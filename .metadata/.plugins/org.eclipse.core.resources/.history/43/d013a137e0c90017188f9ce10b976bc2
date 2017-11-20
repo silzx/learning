@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzx.dao.NewsDao">
+	
+	<!-- 删除 -->
+	<update id="delNews" parameterType="int">
+		update news set yes='no' where id=#{id}
+	</update>
+	<!-- 添加 -->
+	<insert id="addNews" parameterType="news">
+		insert into news(name,pwd,age,nickname) values(#{name},#{pwd},#{age},#{nickname})
+	</insert>
+	<!-- 查询 -->
+	<select id="queryNews" parameterType="fenye" resultType="news">
+		select * from news where yes='yes' 
+			<if test="search.title !=null and search.title !=''">
+				and title like concat('%',concat(#{search.title},'%'))
+			</if>
+			<if test="search.context!=null and search.context!=''">
+				and context like concat('%',concat(#{search.context},'%'))
+			</if>
+			limit #{startRow},#{endRow} 		
+	</select>
+	<!-- 总行数 -->
+	<select id="rowCount" parameterType="fenye" resultType="int">
+		select count(*) from news where yes='yes'
+			<if test="search.title !=null and search.title !=''">
+				and title like concat('%',concat(#{search.title},'%'))
+			</if>
+			<if test="search.context!=null and search.context!=''">
+				and context like concat('%',concat(#{search.context},'%'))
+			</if>
+	</select>
+	<!-- 修改 -->
+	<update id="update" parameterType="news">
+		update news 
+		<trim prefix="set" suffixOverrides=",">
+			<if test="newsid !=null and newsid !=''">
+				newsid={#newsid}
+			</if>
+			<if test="title !=null and title !=''">
+			
+			</if>
+			<if test="context !=null and context !=''">
+			
+			</if>
+			<if test="newsman !=null and newsman !=''">
+			
+			</if>
+			<if test="newsdate !=null and newsdate !=''">
+			
+			</if>
+			<if test="pic !=null and pic !=''">
+			
+			</if>
+		</trim>
+	</update>
+</mapper>

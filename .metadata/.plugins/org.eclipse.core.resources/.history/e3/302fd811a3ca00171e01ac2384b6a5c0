@@ -1,0 +1,14 @@
+package com.wzx.service;
+
+import com.wzx.dto.Role;
+import com.wzx.service.inter.IRoleService;
+
+public class RoleService implements IRoleService{
+
+	@Override
+	public Role getRole() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

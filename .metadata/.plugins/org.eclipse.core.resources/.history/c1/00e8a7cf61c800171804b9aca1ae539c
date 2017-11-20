@@ -1,0 +1,30 @@
+package com.wzx.service;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.UUID;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
+
+import com.wzx.dto.NewsDto;
+import com.wzx.service.inter.IFileUploadService;
+
+public class FileUploadService implements IFileUploadService {
+
+	@Override
+	public NewsDto getNews(File file,String fileName,NewsDto u) {
+		String path=ServletActionContext.getServletContext().getRealPath("/")+"..\\img";
+		String newFileName=UUID.randomUUID().toString()+fileName.substring(getImgFileName().lastIndexOf("."));
+		File newfile=new File(path+"\\"+newFileName);
+		try {
+			FileUtils.copyFile(img, file);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		n.setPic("../img/"+newFileName);
+	}
+}

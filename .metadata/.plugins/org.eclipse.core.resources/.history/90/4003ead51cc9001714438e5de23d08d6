@@ -1,0 +1,7 @@
+package com.wzx.dao;
+
+import com.wzx.dao.inter.INewsDao;
+
+public class NewsDao implements INewsDao{
+
+}

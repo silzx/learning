@@ -1,0 +1,6 @@
+package com.wzx.dao.inter;
+
+public interface INewsDao {
+	public int delNews(int id);
+
+}

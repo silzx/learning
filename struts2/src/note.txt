@@ -1,0 +1,28 @@
+<package name="user" namespace="/UserAction" extends="struts-default">
+		<action name="userLogin" class="com.wzx.Action.UserAction" method="userLogin">
+			<result name="success">/success.jsp</result>
+		</action>
+</package>
+
+package： name属性只是标识符，可以随便取。
+		 namespace属性是这个package所代表的项目中的哪个类
+		 extends属性默认为"struts-default",如果带有json，则为"json-default"
+		 
+action：	 name属性是网页访问的路径 
+		 class属性是该action的全路径
+		 method属性是该action的方法名
+		 
+result:	 name属性是该action所返回的字符串，如果符合，则跳转result的jsp/action
+
+网页访问的路径为：localhost:8080/项目名/namespace/action name+.action后缀
+
+
+请求转发：
+		jsp的请求转发：result的跳转方式默认为请求转发
+		action的请求转发：reuslt标签内添加属性type="chain",result标签内不再写*.jsp,直接写action(即action name)，不用加后缀.action!
+重定向：
+		jsp的重定向：result标签内添加属性type="redirect"
+		action的重定向：result标签内添加属性type="redirectAction",result标签内不再写*.jsp,直接写action(即action name)，不用加后缀.action!
+		
+		
+ActionContext：

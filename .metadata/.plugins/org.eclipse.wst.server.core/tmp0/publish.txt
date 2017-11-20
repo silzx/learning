@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Mon Nov 20 16:50:07 CST 2017
+org.eclipse.jst.jee.server\:Mybatis-Struts-Test=D\:\\apache-tomcat-7.0.82\\webapps\\Mybatis-Struts-Test
+org.eclipse.jst.jee.server\:MyBatis2=D\:\\apache-tomcat-7.0.82\\webapps\\MyBatis2

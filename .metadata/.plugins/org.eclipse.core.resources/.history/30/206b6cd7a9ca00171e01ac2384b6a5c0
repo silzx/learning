@@ -1,0 +1,18 @@
+package com.wzx.util;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.wzx.dao.UserDao;
+import com.wzx.dto.UserDto;
+
+public class Test extends ActionSupport{
+	public  static void main(String[] args) {
+		UserDto u=new UserDto();
+		u.setName("tianhe");
+		u.setPwd("123456");
+		u=ud.login(u);
+		
+	}
+
+}

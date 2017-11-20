@@ -1,0 +1,5 @@
+package com.wzx.dao;
+
+public interface UserDao {
+	public UserDto u login();
+}

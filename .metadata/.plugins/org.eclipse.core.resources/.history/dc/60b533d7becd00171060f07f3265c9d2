@@ -1,0 +1,15 @@
+package com.wzx.util;
+
+
+import redis.clients.jedis.Jedis;
+
+public class JedisTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Jedis je=new Jedis("localhost");
+		je.set("redis-key", "redis-value");
+		String keys[]=je.keys("*");
+		System.out.println(je.get("redis-key"));
+	}
+}

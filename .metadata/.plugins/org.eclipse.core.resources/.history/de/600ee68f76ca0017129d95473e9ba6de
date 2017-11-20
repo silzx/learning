@@ -1,0 +1,5 @@
+package com.wzx.dto;
+
+public class Power {
+	
+}

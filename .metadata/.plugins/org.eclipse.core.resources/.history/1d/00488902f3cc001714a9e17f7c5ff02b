@@ -1,0 +1,22 @@
+package com.wzx.action;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.wzx.dto.UserDto;
+import com.wzx.service.UserService;
+import com.wzx.service.inter.IUserService;
+
+public class UserAction extends ActionSupport{
+	private UserDto u;
+	private IUserService us=new UserService();
+	public String login(){
+		u=us.login(u);
+		return null;
+	}
+	public UserDto getU() {
+		return u;
+	}
+	public void setU(UserDto u) {
+		this.u = u;
+	}
+	
+}

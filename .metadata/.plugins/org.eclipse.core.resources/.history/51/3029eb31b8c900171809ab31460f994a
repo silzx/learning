@@ -1,0 +1,18 @@
+package com.wzx.service;
+
+import java.io.File;
+
+import com.wzx.dto.NewsDto;
+import com.wzx.service.inter.IFileUploadService;
+
+public class FileUploadService implements IFileUploadService{
+
+	@Override
+	public NewsDto getNews(File pic, String picFileName, NewsDto n) {
+		String path=Servlet
+		
+		
+		return null;
+	}
+
+}

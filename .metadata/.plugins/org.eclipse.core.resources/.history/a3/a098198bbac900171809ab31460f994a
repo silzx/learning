@@ -1,0 +1,14 @@
+package com.wzx.service;
+
+import com.wzx.dto.FenYe;
+import com.wzx.service.inter.IFenYeService;
+
+public class FenYeService implements IFenYeService{
+
+	@Override
+	public FenYe getFenYe(FenYe fy, String pag) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

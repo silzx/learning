@@ -1,0 +1,44 @@
+package com.wzx.service;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.wzx.dto.FenYe;
+import com.wzx.service.inter.IFenYeService;
+import com.wzx.service.inter.INewsService;
+
+public class FenYeService implements IFenYeService{
+	private INewsService ns=new NewsService();
+	@Override
+	public FenYe getFenYe(FenYe fy, String pag) {
+		String qtitle=(String) ServletActionContext.getRequest().getAttribute("qtitle");
+		String qcontext=(String) ServletActionContext.getRequest().getAttribute("qcontext");
+		String saveQtitle=(String) ServletActionContext.getRequest().getAttribute("qtitle");
+		String saveQcontext=(String) ServletActionContext.getRequest().getAttribute("qcontext");
+		Map<String,String> se=new HashMap<String,String>();
+		se.put("qtitle", saveQtitle);
+		se.put("qcontext", saveQcontext);
+		FenYe.search=se;
+		if(saveQtitle!=null){
+			qtitle=saveQtitle;
+		}
+		if(saveQcontext!=null){
+			qcontext=saveQcontext;
+		}
+		Map<String,Object> req=(Map<String, Object>) ActionContext.getContext().get("request");
+		req.put("qtitle", qtitle);
+		req.put("qcontext", qcontext);
+		if(pag==null){
+			FenYe.page=1;
+		}else{
+			FenYe.page=Integer.parseInt(pag);
+		}
+		FenYe.rowCount=ns.queryCount(FenYe.fy);
+		FenYe.init();
+		return fy;
+	}
+
+}

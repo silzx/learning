@@ -1,0 +1,7 @@
+package com.wzx.service;
+
+import com.wzx.service.inter.IUserService;
+
+public class UserService implements IUserService{
+
+}

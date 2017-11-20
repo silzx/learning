@@ -1,0 +1,14 @@
+package com.wzx.service;
+
+import com.wzx.dto.UserDto;
+import com.wzx.service.inter.IUserService;
+
+public class UserService implements IUserService{
+
+	@Override
+	public UserDto login(UserDto u) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

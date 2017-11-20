@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+		<!-- 引入外部 properties 文件 -->
+		<context:property-placeholder location="classpath:jdbc.properties"/>
+		<!-- 数据源连接 -->
+ 		<bean id="dataSource" destroy-method="close" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <!-- 池启动时创建的连接数量 -->
+        <property name="initialSize" value="5"/>
+        <!-- 同一时间可以从池分配的最多连接数量。设置为0时表示无限制。 -->
+        <property name="maxActive" value="30"/>
+        <!-- 池里不会被释放的最多空闲连接数量。设置为0时表示无限制。 -->
+        <property name="maxIdle" value="20"/>
+        <!-- 在不新建连接的条件下，池中保持空闲的最少连接数。 -->
+        <property name="minIdle" value="3"/>
+        <!-- 设置自动回收超时连接 -->  
+        <property name="removeAbandoned" value="true" />
+        <!-- 自动回收超时时间(以秒数为单位) -->  
+        <property name="removeAbandonedTimeout" value="200"/>
+        <!-- 设置在自动回收超时连接的时候打印连接的超时错误  --> 
+        <property name="logAbandoned" value="true"/>
+        <!-- 等待超时以毫秒为单位，在抛出异常之前，池等待连接被回收的最长时间（当没有可用连接时）。设置为-1表示无限等待。  -->  
+        <property name="maxWait" value="100"/>
+		</bean>
+		<!-- 配置mybatis的sqlSessionFactoryBean -->
+		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<property name="dataSource" ref="dataSource" /><!-- 表明数据源是谁 -->
+			<property name="configLocation" value="classpath:myBatis.xml"></property><!-- 指定 使用链接的对象 -->
+		</bean>
+		<!-- mybatis数据的处理方式-sqlSessionTemplate -->
+		<bean id="sql" class="org.mybatis.spring.SqlSessionTemplate">
+	      	<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	    </bean>
+	<!-- 方法解析器 -->
+<!-- 	<bean id="parameterMethodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver"> -->
+<!-- 		<property name="paramName" value="action"></property> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="/login" class="com.wzx.controller.UserLogin" scope="prototype"> -->
+		<!-- 注入解析器 --> 
+<!-- 		<property name="methodNameResolver" ref="parameterMethodNameResolver"></property> -->
+<!-- 	</bean>   -->
+	<!-- 设置不拦截静态资源 --> 
+	<mvc:annotation-driven/> 
+	<mvc:resources location="/" mapping="/**/*.js"/>
+	<mvc:resources location="/" mapping="/**/*.css"/>
+	<mvc:default-servlet-handler/>
+	<!-- 开启文件上传 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> 
+	<!-- 配置自动扫描的包 -->
+        <context:component-scan base-package="com.wzx"></context:component-scan>
+        <!-- 增加前缀和后缀 -->
+         <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name = "prefix" value="/"></property>
+            <property name = "suffix" value = ".jsp"></property>
+        </bean>
+<!--         <mvc:interceptors> -->
+<!--         	<mvc:interceptor> -->
+<!--         		<mvc:mapping path="/news/*"/>拦截 -->
+<!--         		<mvc:exclude-mapping path=""/>放行 -->
+<!--         		<bean class="com.wzx.Interceptor.LoginInterceptor"></bean> -->
+<!--         	</mvc:interceptor> -->
+        	
+<!--         </mvc:interceptors> -->
+        
+</beans>

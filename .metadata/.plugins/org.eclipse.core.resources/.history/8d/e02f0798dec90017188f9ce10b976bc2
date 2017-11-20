@@ -1,0 +1,39 @@
+package com.wzx.service;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.RequestAware;
+
+import com.wzx.dto.FenYe;
+import com.wzx.service.inter.IFenYeService;
+import com.wzx.service.inter.INewsService;
+
+public class FenYeService implements IFenYeService,RequestAware{
+	INewsService ns=new NewsService();
+	private Map<String, Object> req=new HashMap<String, Object>();
+	@Override
+	public FenYe getFenYe(FenYe fy, String pag) {
+		String title="";
+		String context="";
+		req.put("title", title);
+		req.put("context", context);
+		FenYe.search=req;
+		if(fy==null){
+			fy=new FenYe();
+		}
+		if(pag==null){
+			FenYe.page=1;
+		}else{
+			FenYe.page=Integer.parseInt(pag);
+		}
+		FenYe.rowCount=ns.rowCount(fy);
+		FenYe.init();
+		return fy;
+	}
+	@Override
+	public void setRequest(Map<String, Object> req) {
+		this.req=req;
+	}
+}
